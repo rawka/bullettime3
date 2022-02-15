@@ -1,15 +1,13 @@
 # bullettime3
 
-Require node and mongo
+Require [node](https://nodejs.org/en/) and [mongo](https://www.mongodb.com/try/download/community?tck=docs_server)
+
+In ```src/config.js``` - change your local ip address
 
 ## Project setup
 ```
 npm install
 ```
-
-## Project config
-
-src/config.js - add your address!!!
 
 ### Build frontend for production
 ```
