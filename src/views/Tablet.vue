@@ -45,16 +45,12 @@
         console.log("conn")
       },
       published: function () {
-        //this.videos.unshift(video)
         this.$router.go('/tablet')
       },
       unpublished: function () {
-          //this.videos.unshift(video)
           this.$router.go('/tablet')
       },
       deleted: function () {
-        //let i = this.videos.map(data => data._id).indexOf(id)
-        //this.videos.splice(i, 1)
         this.$router.go('/tablet')
       }
     },
