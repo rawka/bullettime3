@@ -40,20 +40,22 @@ app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use('/video', express.static(path.join(__dirname, '../video')));
 
 watcher.on('add', path => {
-    const name = path.replace("video\\","");
-    path = path.replace("\\", "/");
-    Video.findOne({name:name}, function (err, res) {
-        if (err) return console.log(err)
-        if (res) {
-            console.log("DUPLICATE "+res.name)
-        } else {
-            const video = new Video({name: name, path: path})
-            video.save(function (err) {
-                if (err) return console.log(err)
-            })
-            io.emit('add_video',video)
-        }
-    })
+    setTimeout(() =>{
+        const name = path.replace("video\\","");
+        path = path.replace("\\", "/");
+        Video.findOne({name:name}, function (err, res) {
+            if (err) return console.log(err)
+            if (res) {
+                console.log("DUPLICATE "+res.name)
+            } else {
+                const video = new Video({name: name, path: path})
+                video.save(function (err) {
+                    if (err) return console.log(err)
+                })
+                io.emit('add_video',video)
+            }
+        })
+    }, 7000)
 });
 
 io.on("connection", (socket) => {

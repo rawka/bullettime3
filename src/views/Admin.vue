@@ -1,14 +1,19 @@
 <template>
   <div class="admin">
+    <div class="global__controls">
+      <button class="btn btn-green" v-on:click="del(video._id, video.name)">Запустить EXE</button>
+      <button class="btn btn-green" v-on:click="del(video._id, video.name)">Запустить BAT</button>
+      <button class="btn btn-red" v-on:click="del(video._id, video.name)">Удалить все</button>
+    </div>
     <div class="video" v-for="video in videos" :key="video._id">
       <video :src="video.path" loop controls>
         Не поддерживается
       </video>
       <div class="controls">
-        <button class="btn btn-red" v-on:click="del(video._id, video.name)">Удалить</button>
-        <img src = "../assets/qr.svg" alt="QR"/>
+        <img src = "../assets/qr__wifi.svg" alt="QR" class="qr"/>
         <button v-if="video.publish" class="btn btn-grey" v-on:click="unpublish(video._id)">Убрать</button>
         <button v-else class="btn btn-green" v-on:click="publish(video._id)">Опубликовать</button>
+        <img src = "../assets/qr__site.svg" alt="QR" class="qr"/>
       </div>
     </div>
   </div>
@@ -79,6 +84,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 10px;
   }
   .btn {
     font-size: 16px;
@@ -102,8 +108,9 @@
   .btn-red {
     background: #e62222;
   }
-  .qr {
-    width: 200px;
-    height: 200px;
+  .global__controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
   }
 </style>
